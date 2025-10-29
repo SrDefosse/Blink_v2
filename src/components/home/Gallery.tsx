@@ -76,12 +76,12 @@ const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, className
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center dark:bg-black bg-white bg-opacity-95 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center dark:bg-[#FAF8F3] bg-[#FAF8F3] bg-opacity-95 p-4"
             onClick={closeImage}
           >
             {/* Close Button */}
             <button
-              className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors"
+              className="absolute top-4 right-4 z-10 text-gray-900 hover:text-gray-700 transition-colors"
               onClick={closeImage}
             >
               <svg
@@ -102,7 +102,7 @@ const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, className
             {/* Previous Button */}
             {images.length > 1 && (
               <button
-                className="absolute left-4 z-10 text-white hover:text-gray-300 transition-colors"
+                className="absolute left-4 z-10 text-gray-900 hover:text-gray-700 transition-colors"
                 onClick={goToPrev}
               >
                 <svg
@@ -141,7 +141,7 @@ const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, className
             {/* Next Button */}
             {images.length > 1 && (
               <button
-                className="absolute right-4 z-10 text-white hover:text-gray-300 transition-colors"
+                className="absolute right-4 z-10 text-gray-900 hover:text-gray-700 transition-colors"
                 onClick={goToNext}
               >
                 <svg
@@ -161,7 +161,7 @@ const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, className
             )}
 
             {/* Image Counter */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white text-sm dark:bg-black bg-white bg-opacity-50 px-4 py-2 rounded-md">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-900 text-sm dark:bg-[#FAF8F3] bg-[#FAF8F3] bg-opacity-90 px-4 py-2 rounded-md border border-gray-300">
               {selectedIndex + 1} / {images.length}
             </div>
           </motion.div>
@@ -181,7 +181,7 @@ export default function Gallery() {
   ];
 
   return (
-    <div className="min-h-screen dark:bg-black bg-white flex items-center justify-center p-8">
+    <div className="min-h-screen dark:bg-[#FAF8F3] bg-[#FAF8F3] flex items-center justify-center p-8">
       <ExpandableGallery images={images} className="w-3/4 max-w-7xl" />
     </div>
   );

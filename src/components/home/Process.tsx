@@ -1,15 +1,15 @@
 
 export default function Process() {
   return (
-    <main className="bg-black">
+    <main className="bg-[#FAF8F3]">
       <div className="wrapper">
-        <section className="text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0">
+        <section className="text-gray-900 h-screen w-full bg-[#FAF8F3] grid place-content-center sticky top-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
           <h1 className="2xl:text-7xl text-6xl px-8 font-semibold text-center tracking-tight leading-[120%]">
           </h1>
         </section>
 
-        <section className="bg-gray-300 text-black grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden">
+        <section className="bg-[#FAF8F3] text-black grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
           <h1 className="2xl:text-7xl text-4xl px-8 font-semibold text-center tracking-tight leading-[120%]">
             If you don't like this Smooth Scroll then I'm sorry, <br />
@@ -17,7 +17,7 @@ export default function Process() {
           </h1>
         </section>
 
-        <section className="text-white h-screen w-full bg-slate-950 grid place-content-center sticky top-0">
+        <section className="text-gray-900 h-screen w-full bg-[#FAF8F3] grid place-content-center sticky top-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
           <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
             Don't Forget To Share <br /> This Sticky CSS Tricks.😎
@@ -25,7 +25,7 @@ export default function Process() {
         </section>
       </div>
 
-      <section className="text-white w-full bg-slate-950">
+      <section className="text-gray-900 w-full bg-[#FAF8F3]">
         <div className="grid grid-cols-2">
           <div className="sticky top-0 h-screen flex items-center justify-center">
             <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
@@ -70,7 +70,7 @@ export default function Process() {
         </div>
       </section>
 
-      <section className="text-white w-full bg-slate-950">
+      <section className="text-gray-900 w-full bg-[#FAF8F3]">
         <div className="grid grid-cols-2 px-8">
           <div className="grid gap-2">
             <figure className="sticky top-0 h-screen grid place-content-center">
@@ -116,11 +116,11 @@ export default function Process() {
         </div>
       </section>
 
-      <footer className="group bg-slate-950">
-        <h1 className="text-[16vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-400 to-gray-800 bg-clip-text text-transparent transition-all ease-linear">
+      <footer className="group bg-[#FAF8F3]">
+        <h1 className="text-[16vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent transition-all ease-linear">
           ui-layout
         </h1>
-        <section className="bg-black h-40 relative z-10 grid place-content-center text-2xl rounded-tr-full rounded-tl-full">
+        <section className="bg-[#FAF8F3] h-40 relative z-10 grid place-content-center text-2xl text-gray-900 rounded-tr-full rounded-tl-full">
           Thanks for Scrolling
         </section>
       </footer>

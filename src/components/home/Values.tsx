@@ -15,11 +15,11 @@ export default function Values() {
   }, []);
 
   const slides = [
-    { label: "PASSION", bg: "bg-red-400" },
-    { label: "WORK", bg: "bg-blue-400" },
-    { label: "MOTIVATION", bg: "bg-orange-400" },
-    { label: "INSPIRATION", bg: "bg-yellow-400" },
-    { label: "BELIVE", bg: "bg-green-400" },
+    { label: "PASSION", bg: "bg-[#FAF8F3]" },
+    { label: "VISION", bg: "bg-[#FAF8F3]" },
+    { label: "TEAMWORK", bg: "bg-[#FAF8F3]" },
+    { label: "INNOVATION", bg: "bg-[#FAF8F3]" },
+    { label: "COMMUNICATION", bg: "bg-[#FAF8F3]" },
   ];
 
   const { scrollYProgress } = useScroll({
@@ -33,14 +33,6 @@ export default function Values() {
   return (
     <main>
       <article>
-        <header className="text-white relative w-full bg-slate-950 grid place-content-center h-[80vh]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-          <h1 className="text-6xl font-bold text-center tracking-tight">
-            I know You Love to Scroll <br />
-            So Scroll
-          </h1>
-        </header>
-
         {/* Sección alta para pin; el wrapper sticky oculta el overflow */}
         <section ref={sectionRef} className="h-[500vh] relative">
           <div className="sticky top-0 h-screen overflow-hidden">
@@ -51,7 +43,7 @@ export default function Values() {
                 const headerX = useTransform(
                   scrollYProgress,
                   [segStart, segEnd],
-                  [800, -800]
+                  [500, -500]
                 );
 
                 return (
@@ -60,7 +52,7 @@ export default function Values() {
                     className={`flex-none w-screen h-screen ${s.bg} flex items-center justify-center`}
                   >
                     <motion.h2
-                      className="text-[20vw] font-semibold leading-none text-black"
+                      className="text-[10vw] font-semibold leading-none text-gray-900"
                       style={{ x: headerX }}
                     >
                       {s.label}
@@ -71,20 +63,6 @@ export default function Values() {
             </motion.ul>
           </div>
         </section>
-
-        <footer className="bg-red-600 text-white grid place-content-center h-[80vh]">
-          <p>
-            Created By{" "}
-            <a
-              className="underline"
-              target="_blank"
-              rel="noreferrer"
-              href="https://twitter.com/mattgperry"
-            >
-              Matt Perry
-            </a>
-          </p>
-        </footer>
       </article>
     </main>
   );

@@ -11,9 +11,9 @@ import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motio
  */
 export default function ShowCase1({
   scrollHeight = 1500,
-  desktopImage = "https://images.unsplash.com/photo-1511884642898-4c92249e20b6",
+  desktopImage = "/showcase/showcase1_PC.webp",
   mobileImage =
-    "https://images.unsplash.com/photo-1511207538754-e8555f2bc187?q=80&w=2412&auto=format&fit=crop&ixlib=rb-4.1.0",
+    "/showcase/showcase1_mobile.png",
   initialClipPercentage = 25,
   finalClipPercentage = 75,
 }) {
@@ -38,7 +38,7 @@ export default function ShowCase1({
     <div
       ref={sectionRef}
       style={{ height: `calc(${scrollHeight}px + 100vh)` }}
-      className="relative w-full bg-black"
+      className="relative w-full bg-[#FAF8F3]"
     >
       {/* Capa sticky que ocupa el viewport durante el tramo de scroll */}
       <motion.div
@@ -72,7 +72,7 @@ export default function ShowCase1({
         {/* Contenido opcional */}
         <div className="absolute inset-0 grid place-items-center">
           <h1 className="text-white text-4xl md:text-6xl font-semibold tracking-tight text-center drop-shadow">
-            Smooth Scroll Hero
+            
           </h1>
         </div>
       </motion.div>

@@ -20,7 +20,7 @@ function Button({ children, size = "md", className = "", onClick, type = "button
     <button
       type={type}
       onClick={onClick}
-      className={`inline-flex items-center justify-center rounded-xl border border-black/10 dark:border-white/15 bg-black text-white dark:bg-white dark:text-black transition-colors hover:opacity-90 active:opacity-80 ${sizes[size]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-xl border border-black/10 bg-black text-white transition-colors hover:opacity-90 active:opacity-80 ${sizes[size]} ${className}`}
     >
       {children}
     </button>
@@ -29,7 +29,7 @@ function Button({ children, size = "md", className = "", onClick, type = "button
 
 export default function HomeHero() {
   return (
-    <section className="min-h-screen overflow-hidden relative py-20">
+    <section className="min-h-screen overflow-hidden relative py-20 bg-[#FAF8F3]">
       <div className="mx-auto max-w-7xl relative z-20 px-6">
         <div className="relative ">
           <p className="text-sm absolute -top-4 left-20 font-medium tracking-wider">
@@ -38,7 +38,7 @@ export default function HomeHero() {
           <h1
             className={`z-20 text-primary relative font-bold text-center tracking-[-7px] text-7xl md:text-9xl xl:tracking-[-1rem] md:tracking-[-14px] xl:text-[10rem]`}
           >
-            CREATIVE DESIGNER
+            BLINK
           </h1>
           <p className="text-4xl hidden xl:block absolute -bottom-12 right-24 font-thin tracking-[6px]">
             ALI IMAM
@@ -50,25 +50,25 @@ export default function HomeHero() {
 
         <div className="grid relative">
           <div className="space-y-8 pt-20 flex gap-6 justify-center">
-            <div className="flex gap-6 bg-secondary w-full max-w-xl h-fit p-10 items-end space-y-2 text-xl font-bold md:text-2xl lg:text-3xl">
+            <div className="flex gap-6 w-full max-w-xl h-fit p-10 items-end space-y-2 text-xl font-bold md:text-2xl lg:text-3xl">
               <div className="font-semibold text-xl">
                 <div>/ ART DIRECTION</div>
                 <div>/ WEB DESIGN (UX/UI)</div>
                 <div>/ WEB DEVELOPMENT</div>
               </div>
-              <div className="absolute hidden md:flex left-1/2 -top-10 w-fit overflow-hidden bg-secondary">
+              <div className="absolute hidden md:flex left-1/2 -top-10 w-fit overflow-hidden">
                 <img
-                  src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/ai.jpg"
+                  src="/logos/blink_logo.webp"
                   alt="Designer portrait"
                   className="h-100 w-full object-contain grayscale"
                 />
                 <div className="text-left p-2 rotate-180 [writing-mode:vertical-rl] text-xs font-medium tracking-widest">
-                  BASED IN BOKARO STEEL CITY
+                  BASED IN MEXICO CITY
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex md:hidden left-1/2 -top-10 w-full md:w-fit overflow-hidden bg-secondary">
+          <div className="flex md:hidden left-1/2 -top-10 w-full md:w-fit overflow-hidden">
             <img
               src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/ai.jpg"
               alt="Designer portrait"
@@ -138,11 +138,11 @@ export default function HomeHero() {
 
       {/* Fondo grid claro */}
       <div
-        className="absolute block dark:hidden inset-0 z-0"
+        className="absolute block inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, #e5e5e5 1px, transparent 1px),
-            linear-gradient(to bottom, #e5e5e5 1px, transparent 1px)
+            linear-gradient(to right, #d4d4d4 1px, transparent 1px),
+            linear-gradient(to bottom, #d4d4d4 1px, transparent 1px)
           `,
           backgroundSize: "20px 20px",
           backgroundPosition: "0 0, 0 0",
@@ -185,54 +185,6 @@ export default function HomeHero() {
         }}
       />
 
-      {/* Fondo grid oscuro */}
-      <div
-        className="absolute hidden dark:block inset-0 z-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #404040 1px, transparent 1px),
-            linear-gradient(to bottom, #404040 1px, transparent 1px)
-          `,
-          backgroundSize: "20px 20px",
-          backgroundPosition: "0 0, 0 0",
-          maskImage: `
-            repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-          `,
-          WebkitMaskImage: `
-            repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-          `,
-          maskComposite: "intersect",
-          WebkitMaskComposite: "source-in",
-        }}
-      />
     </section>
   );
 }

@@ -28,9 +28,9 @@ export default function ShowCase2() {
 
   // Imagen (reemplaza si quieres otra)
   const desktopImage =
-    "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?q=80&w=2400&auto=format&fit=crop";
+    "/showcase/showcase1_PC.webp";
   const mobileImage =
-    "https://images.unsplash.com/photo-1511207538754-e8555f2bc187?q=80&w=1200&auto=format&fit=crop";
+    "/showcase/showcase1_mobile.webp";
 
   return (
     <div className="flex flex-col overflow-hidden pb-[500px] pt-[200px] md:pt-[300px]">
