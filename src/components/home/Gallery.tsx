@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ExpandableGalleryProps {
@@ -18,15 +18,15 @@ const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, className
     setSelectedIndex(null);
   };
 
-  const goToNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const goToNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (selectedIndex !== null) {
       setSelectedIndex((selectedIndex + 1) % images.length);
     }
   };
 
-  const goToPrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const goToPrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (selectedIndex !== null) {
       setSelectedIndex((selectedIndex - 1 + images.length) % images.length);
     }
@@ -38,6 +38,30 @@ const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, className
     }
     return hoveredIndex === index ? 2 : 0.5;
   };
+
+  // Keyboard event handlers
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedIndex === null) return;
+
+      switch (e.key) {
+        case 'Escape':
+          closeImage();
+          break;
+        case 'ArrowLeft':
+          goToPrev();
+          break;
+        case 'ArrowRight':
+          goToNext();
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedIndex, images.length]);
 
   return (
     <div className={className}>
@@ -174,14 +198,14 @@ const ExpandableGallery: React.FC<ExpandableGalleryProps> = ({ images, className
 // Example Usage
 export default function Gallery() {
   const images = [
-    "https://images.unsplash.com/photo-1709884735646-897b57461d61?q=80&w=3628&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1502085671122-2d218cd434e6?q=80&w=3626&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "/showcase/gallery_imgs/gallery1.png",
+    "/showcase/gallery_imgs/gallery2.png",
+    "/showcase/gallery_imgs/gallery3.png",
+    "/showcase/gallery_imgs/gallery4.png",
   ];
 
   return (
-    <div className="min-h-screen dark:bg-[#FAF8F3] bg-[#FAF8F3] flex items-center justify-center p-8">
+    <div className="min-h-screen bg-[#FAF8F3] flex items-center justify-center p-8">
       <ExpandableGallery images={images} className="w-3/4 max-w-7xl" />
     </div>
   );

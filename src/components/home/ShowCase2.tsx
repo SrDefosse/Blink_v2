@@ -28,9 +28,9 @@ export default function ShowCase2() {
 
   // Imagen (reemplaza si quieres otra)
   const desktopImage =
-    "/showcase/showcase1_PC.webp";
+    "/showcase/showcase2/showcase2_PC.png";
   const mobileImage =
-    "/showcase/showcase1_mobile.webp";
+    "/showcase/showcase2/showcase2_mobile.png";
 
   return (
     <div className="flex flex-col overflow-hidden pb-[500px] pt-[200px] md:pt-[300px]">

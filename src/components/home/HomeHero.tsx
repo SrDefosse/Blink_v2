@@ -38,13 +38,13 @@ export default function HomeHero() {
           <h1
             className={`z-20 text-primary relative font-bold text-center tracking-[-7px] text-7xl md:text-9xl xl:tracking-[-1rem] md:tracking-[-14px] xl:text-[10rem]`}
           >
-            BLINK
+            BLINK STUDIO
           </h1>
           <p className="text-4xl hidden xl:block absolute -bottom-12 right-24 font-thin tracking-[6px]">
-            ALI IMAM
+            DIGITAL AGENCY
           </p>
           <p className="text-4xl absolute xl:hidden -bottom-12 left-24 font-thin tracking-[6px]">
-            ALI IMAM
+            DIGITAL AGENCY
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function HomeHero() {
               className="h-100 w-full object-contain grayscale"
             />
             <div className="text-left p-2 rotate-180 [writing-mode:vertical-rl] text-xs font-medium tracking-widest">
-              BASED IN BOKARO STEEL CITY
+              BASED IN MEXICO CITY
             </div>
           </div>
         </div>

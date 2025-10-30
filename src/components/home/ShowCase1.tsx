@@ -11,9 +11,8 @@ import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motio
  */
 export default function ShowCase1({
   scrollHeight = 1500,
-  desktopImage = "/showcase/showcase1_PC.webp",
-  mobileImage =
-    "/showcase/showcase1_mobile.png",
+  desktopImage = "/showcase/showcase1/showcase1_PC.webp",
+  mobileImage = "/showcase/showcase1/showcase1_mobile.png",
   initialClipPercentage = 25,
   finalClipPercentage = 75,
 }) {

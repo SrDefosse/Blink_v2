@@ -16,10 +16,10 @@ export default function Values() {
 
   const slides = [
     { label: "PASSION", bg: "bg-[#FAF8F3]" },
-    { label: "VISION", bg: "bg-[#FAF8F3]" },
-    { label: "TEAMWORK", bg: "bg-[#FAF8F3]" },
-    { label: "INNOVATION", bg: "bg-[#FAF8F3]" },
-    { label: "COMMUNICATION", bg: "bg-[#FAF8F3]" },
+    { label: "VISION", bg: "bg-[#F5F0E8]" },
+    { label: "TEAMWORK", bg: "bg-[#F8F5ED]" },
+    { label: "INNOVATION", bg: "bg-[#F2EDE0]" },
+    { label: "COMMUNICATION", bg: "bg-[#EFE8D8]" },
   ];
 
   const { scrollYProgress } = useScroll({
