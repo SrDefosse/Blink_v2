@@ -12,15 +12,14 @@ export default function Process() {
         <section className="bg-[#FAF8F3] text-black grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
           <h1 className="2xl:text-7xl text-4xl px-8 font-semibold text-center tracking-tight leading-[120%]">
-            If you don't like this Smooth Scroll then I'm sorry, <br />
-            create your own and make it open source 💼
+            We have a process that we follow to create the best web experiences for our clients <br />
           </h1>
         </section>
 
         <section className="text-gray-900 h-screen w-full bg-[#FAF8F3] grid place-content-center sticky top-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
           <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
-            Don't Forget To Share <br /> This Sticky CSS Tricks.😎
+            Keep scrolling ;)
           </h1>
         </section>
       </div>
@@ -29,8 +28,7 @@ export default function Process() {
         <div className="grid grid-cols-2">
           <div className="sticky top-0 h-screen flex items-center justify-center">
             <h1 className="2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]">
-              Thanks To Scroll.
-              <br /> Now Scroll Up Again☝️🏿
+              We will meet with you to understand your business and your goals
             </h1>
           </div>
           <div className="grid gap-2">
@@ -109,20 +107,16 @@ export default function Process() {
 
           <div className="sticky top-0 h-screen grid place-content-center">
             <h1 className="text-4xl px-8 font-medium text-right tracking-tight leading-[120%]">
-              Copied &amp; Paste Every Component you want and make an creative
-              website 😎
+              We will create a plan for the project based on your business and your goals
             </h1>
           </div>
         </div>
       </section>
 
       <footer className="group bg-[#FAF8F3]">
-        <h1 className="text-[16vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent transition-all ease-linear">
-          ui-layout
+        <h1 className="text-[12vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent transition-all ease-linear">
+          BLINK STUDIO
         </h1>
-        <section className="bg-[#FAF8F3] h-40 relative z-10 grid place-content-center text-2xl text-gray-900 rounded-tr-full rounded-tl-full">
-          Thanks for Scrolling
-        </section>
       </footer>
     </main>
   );

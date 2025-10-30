@@ -43,7 +43,7 @@ export default function Values() {
                 const headerX = useTransform(
                   scrollYProgress,
                   [segStart, segEnd],
-                  [500, -500]
+                  [400, -400]
                 );
 
                 return (
@@ -52,7 +52,7 @@ export default function Values() {
                     className={`flex-none w-screen h-screen ${s.bg} flex items-center justify-center`}
                   >
                     <motion.h2
-                      className="text-[10vw] font-semibold leading-none text-gray-900"
+                      className="text-[15vw] md:text-[10vw] font-semibold leading-none text-gray-900"
                       style={{ x: headerX }}
                     >
                       {s.label}

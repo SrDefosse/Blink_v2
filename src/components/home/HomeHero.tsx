@@ -33,7 +33,7 @@ export default function HomeHero() {
       <div className="mx-auto max-w-7xl relative z-20 px-6">
         <div className="relative ">
           <p className="text-sm absolute -top-4 left-20 font-medium tracking-wider">
-            1,996
+            1,999
           </p>
           <h1
             className={`z-20 text-primary relative font-bold text-center tracking-[-7px] text-7xl md:text-9xl xl:tracking-[-1rem] md:tracking-[-14px] xl:text-[10rem]`}
@@ -43,7 +43,7 @@ export default function HomeHero() {
           <p className="text-4xl hidden xl:block absolute -bottom-12 right-24 font-thin tracking-[6px]">
             DIGITAL AGENCY
           </p>
-          <p className="text-4xl absolute xl:hidden -bottom-12 left-24 font-thin tracking-[6px]">
+          <p className="text-4xl absolute xl:hidden -bottom-20 left-24 font-thin tracking-[6px]">
             DIGITAL AGENCY
           </p>
         </div>
@@ -52,11 +52,14 @@ export default function HomeHero() {
           <div className="space-y-8 pt-20 flex gap-6 justify-center">
             <div className="flex gap-6 w-full max-w-xl h-fit p-10 items-end space-y-2 text-xl font-bold md:text-2xl lg:text-3xl">
               <div className="font-semibold text-xl">
-                <div>/ ART DIRECTION</div>
-                <div>/ WEB DESIGN (UX/UI)</div>
-                <div>/ WEB DEVELOPMENT</div>
+                <div>/ WEBSITES </div>
+                <div>/ ECOMMERCE WEBSITES </div>
+                <div>/ LANDING PAGES </div>
+                <div>/ BRANDING </div>
+                <div>/ AI AUDIOVISUAL CONTENT </div>
+                <div>/ CHATBOTS </div>
               </div>
-              <div className="absolute hidden md:flex left-1/2 -top-10 w-fit overflow-hidden">
+              <div className="absolute hidden md:flex left-1/2 -top-8 w-fit overflow-hidden">
                 <img
                   src="/logos/blink_logo.webp"
                   alt="Designer portrait"
@@ -70,7 +73,7 @@ export default function HomeHero() {
           </div>
           <div className="flex md:hidden left-1/2 -top-10 w-full md:w-fit overflow-hidden">
             <img
-              src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/ai.jpg"
+              src="/logos/blink_logo.webp"
               alt="Designer portrait"
               className="h-100 w-full object-contain grayscale"
             />
@@ -82,9 +85,9 @@ export default function HomeHero() {
 
         <div className="md:mt-40 mt-10">
           <p className="mx-auto max-w-2xl font-mono text-center text-sm font-medium tracking-wide md:text-base">
-            I'M EXPERIENCED WEB AND UX/UI DESIGNER,
+            WE ARE A DIGITAL AGENCY
             <br />
-            WHO DESIGN MEMORABLE WEB EXPERIENCES FOR
+            THAT CREATES MEMORABLE WEB EXPERIENCES FOR
             <br />
             BRANDS OF ALL SIZES
           </p>
@@ -129,7 +132,7 @@ export default function HomeHero() {
 
             <div className="mt-3 md:text-right">
               <h2 className="text-5xl uppercase tracking-[-4px]">
-                Design without Limits
+                CHECK IT OUT
               </h2>
             </div>
           </div>
