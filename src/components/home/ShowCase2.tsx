@@ -33,7 +33,7 @@ export default function ShowCase2() {
     "/showcase/showcase2/showcase2_mobile.png";
 
   return (
-    <div className="flex flex-col overflow-hidden pb-[500px] pt-[200px] md:pt-[300px]">
+    <div className="bg-[#FAF8F3] flex flex-col overflow-hidden pb-[500px] pt-[200px] md:pt-[300px]">
       <div
         ref={containerRef}
         className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
@@ -42,9 +42,9 @@ export default function ShowCase2() {
           {/* Header */}
           <motion.div style={{ translateY }} className="max-w-5xl mx-auto text-center">
             <h1 className="text-4xl font-semibold text-black">
-              Unleash the power of <br />
+              We build what you<br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Scroll Animations
+                Imagine
               </span>
             </h1>
           </motion.div>

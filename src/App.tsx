@@ -5,6 +5,7 @@ import About from './pages/About'
 import NotFound from './pages/NotFound'
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollToTop from './hooks/useScrollToTop'
+import Footer from './layout/Footer'
 
 function AppContent() {
   // Scroll to top al cambiar de ruta (debe estar dentro de BrowserRouter)
@@ -20,6 +21,7 @@ function AppContent() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      <Footer />
     </>
   )
 }

@@ -1,5 +1,5 @@
  // Navbar.tsx
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Transition } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -142,6 +142,56 @@ export default function Navbar({ className }: NavbarProps) {
   const [active, setActive] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<string | null>(null);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
+
+  // Cerrar menú móvil al hacer click fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuOpen &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
+  // Ocultar/mostrar navbar al hacer scroll (solo en desktop)
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Solo aplicar en desktop (pantallas md y mayores)
+      if (window.innerWidth >= 768) {
+        // Si el scroll es muy pequeño (cerca del top), siempre mostrar
+        if (currentScrollY < 10) {
+          setIsNavbarVisible(true);
+        } else if (currentScrollY > lastScrollY.current) {
+          // Scroll hacia abajo - ocultar
+          setIsNavbarVisible(false);
+        } else {
+          // Scroll hacia arriba - mostrar
+          setIsNavbarVisible(true);
+        }
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Todo el contenido/"parámetros" se define aquí mismo:
   const services = [
@@ -193,13 +243,27 @@ export default function Navbar({ className }: NavbarProps) {
   return (
     <>
       {/* Desktop Menu - Hidden on mobile */}
-      <div
+      <motion.div
+        initial={{ y: 0, opacity: 1 }}
+        animate={{ 
+          y: isNavbarVisible ? 0 : -120,
+          opacity: isNavbarVisible ? 1 : 0
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className={cn(
           "fixed top-4 inset-x-0 max-w-xl mx-auto z-50 hidden md:block",
+          isNavbarVisible ? "pointer-events-auto" : "pointer-events-none",
           className
         )}
       >
         <Menu setActive={setActive}>
+          <Link
+            to="/"
+            className="cursor-pointer text-black hover:opacity-[0.9] select-none"
+          >
+            Home
+          </Link>
+
           <MenuItem setActive={setActive} active={active} item="Services">
             <div className="flex flex-col space-y-4 text-sm">
               {services.map((s) => (
@@ -210,7 +274,7 @@ export default function Navbar({ className }: NavbarProps) {
             </div>
           </MenuItem>
 
-          <MenuItem setActive={setActive} active={active} item="Products">
+          <MenuItem setActive={setActive} active={active} item="Portfolio">
             <div className="text-sm grid grid-cols-2 gap-10 p-4">
               {products.map((p) => (
                 <ProductItem key={p.title} {...p} />
@@ -228,10 +292,13 @@ export default function Navbar({ className }: NavbarProps) {
             </div>
           </MenuItem>
         </Menu>
-      </div>
+      </motion.div>
 
       {/* Mobile Menu - Visible only on mobile */}
-      <div className={cn("fixed top-4 inset-x-0 z-50 px-4 md:hidden", className)}>
+      <div 
+        ref={mobileMenuRef}
+        className={cn("fixed top-4 inset-x-0 z-50 px-4 md:hidden", className)}
+      >
         {/* Mobile Menu Button */}
         <div className="flex justify-end">
           <button
@@ -268,6 +335,17 @@ export default function Navbar({ className }: NavbarProps) {
               className="mt-2 bg-[#FFF8F0]/80 backdrop-blur-lg border border-white/30 rounded-2xl shadow-xl overflow-hidden"
             >
               <div className="p-4">
+                {/* Home Section */}
+                <div className="border-b border-neutral-200 pb-3">
+                  <Link
+                    to="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block font-medium text-black hover:opacity-70"
+                  >
+                    Home
+                  </Link>
+                </div>
+
                 {/* Services Section */}
                 <div className="border-b border-neutral-200 pb-3">
                   <button
@@ -318,13 +396,13 @@ export default function Navbar({ className }: NavbarProps) {
                   </AnimatePresence>
                 </div>
 
-                {/* Products Section */}
+                {/* Portfolio Section */}
                 <div className="border-b border-neutral-200 py-3">
                   <button
                     onClick={() => toggleMobileAccordion("products")}
                     className="w-full flex justify-between items-center text-left font-medium text-black"
                   >
-                    <span>Products</span>
+                    <span>Portfolio</span>
                     <svg
                       className={cn(
                         "w-4 h-4 transition-transform",

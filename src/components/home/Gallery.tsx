@@ -205,7 +205,8 @@ export default function Gallery() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF8F3] flex items-center justify-center p-8">
+    <div className="min-h-screen bg-[#FAF8F3] flex flex-col items-center justify-center p-8">
+      <h2 className="text-4xl font-semibold text-gray-900 mb-8">Some of our work</h2>
       <ExpandableGallery images={images} className="w-3/4 max-w-7xl" />
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPlus } from 'react-icons/fa';
+import { FaFacebookF, FaEnvelope, FaPlus, FaInstagram } from 'react-icons/fa';
 
 const ContactComponent = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +41,7 @@ const ContactComponent = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white p-4 md:p-8">
+    <div className="bg-[#FAF8F3] min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Section */}
         <div className="space-y-8">
@@ -54,19 +54,7 @@ const ContactComponent = () => {
           </div>
 
           {/* Location & Help */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-[#F5F0E8] p-6 rounded-xl shadow-sm border border-[#EFE8D8]">
-              <div className="flex items-start gap-3">
-                <div className="bg-[#F8F5ED] p-2 rounded-lg">
-                  <FaMapMarkerAlt className="text-gray-700 text-xl" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">Our Location</h3>
-                  <p className="text-sm text-gray-700">401 Broadway, 24th Floor,</p>
-                  <p className="text-sm text-gray-700">Orchard Cloud View, London</p>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 gap-6">
 
             <div className="bg-[#F5F0E8] p-6 rounded-xl shadow-sm border border-[#EFE8D8]">
               <div className="flex items-start gap-3">
@@ -75,8 +63,7 @@ const ContactComponent = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-2">How Can We Help?</h3>
-                  <p className="text-sm text-gray-700">info@yourdomain.com</p>
-                  <p className="text-sm text-gray-700">contact@yourdomain.com</p>
+                  <p className="text-sm text-gray-700">blinksites@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -117,14 +104,14 @@ const ContactComponent = () => {
           <div className="space-y-6">
             <div>
               <p className="text-gray-700 text-sm mb-3">Mail us at</p>
-              <p className="text-gray-900 font-semibold mb-4">info@yourcompany.com</p>
+              <p className="text-gray-900 font-semibold mb-4">blinksites@gmail.com</p>
               <div className="flex items-center gap-4">
                 <span className="text-gray-600 text-sm">OR</span>
                 <button type="button" className="bg-[#EFE8D8] hover:bg-[#F2EDE0] p-3 rounded-lg transition-colors">
                   <FaFacebookF className="text-gray-800" />
                 </button>
                 <button type="button" className="bg-[#EFE8D8] hover:bg-[#F2EDE0] p-3 rounded-lg transition-colors">
-                  <FaTwitter className="text-gray-800" />
+                  <FaInstagram className="text-gray-800" />
                 </button>
               </div>
             </div>
@@ -173,15 +160,11 @@ const ContactComponent = () => {
                 <label className="text-gray-800 text-sm mb-3 block">I'm looking for...</label>
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { value: 'website', label: 'Website' },
-                    { value: 'mobile', label: 'Mobile App' },
-                    { value: 'ecommerce', label: 'E-Commerce' },
-                    { value: 'brand', label: 'Brand Identity' },
-                    { value: 'social', label: 'Social Media Marketing' },
-                    { value: 'strategy', label: 'Brand Strategy & Consulting' },
-                    { value: 'webapp', label: 'Web App' },
-                    { value: '3d', label: '3D & Animation' },
-                    { value: 'other', label: 'Other' }
+                    { value: 'web-development', label: 'Web Development' },
+                    { value: 'branding', label: 'Branding & Identity' },
+                    { value: 'ai-content', label: 'AI Driven Content Creation' },
+                    { value: 'chatbots', label: 'Chatbots' },
+                    { value: 'automation', label: 'Automation Systems' }
                   ].map((option) => (
                     <label key={option.value} className="flex items-center gap-2 text-gray-800 text-sm cursor-pointer">
                       <input
