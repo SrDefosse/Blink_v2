@@ -29,7 +29,7 @@ function Button({ children, size = "md", className = "", onClick, type = "button
 
 export default function HomeHero() {
   return (
-    <section className="min-h-screen overflow-hidden relative py-20 bg-[#FAF8F3]">
+    <section className="min-h-screen overflow-hidden relative py-30 bg-[#FAF8F3]">
       <div className="mx-auto max-w-7xl relative z-20 px-6">
         <div className="relative ">
           <p className="text-sm absolute -top-4 left-20 font-medium tracking-wider">
@@ -85,9 +85,9 @@ export default function HomeHero() {
 
         <div className="md:mt-40 mt-10">
           <p className="mx-auto max-w-2xl font-mono text-center text-sm font-medium tracking-wide md:text-base">
-            WE ARE A DIGITAL AGENCY
+            WE ARE A DIGITAL STUDIO
             <br />
-            THAT CREATES MEMORABLE WEB EXPERIENCES FOR
+            THAT CREATES SOLUTIONS FOR
             <br />
             BRANDS OF ALL SIZES
           </p>

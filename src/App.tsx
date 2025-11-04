@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import TopNav from './layout/TopNav'
+import Navbar from './layout/Navbar'
 import Home from './pages/Home'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
@@ -12,7 +12,7 @@ function AppContent() {
 
   return (
     <>
-      <TopNav />
+      <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

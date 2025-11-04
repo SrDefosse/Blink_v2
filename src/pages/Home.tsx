@@ -4,6 +4,7 @@ import Process from "../components/home/Process";
 import ShowCase1 from "../components/home/ShowCase1";
 import Gallery from "../components/home/Gallery";
 import ShowCase2 from "../components/home/ShowCase2";
+import ContactSection from "../components/home/Contact";
 
 export default function Home() {
   return (
@@ -25,6 +26,9 @@ export default function Home() {
       </section>
       <section>
         <ShowCase2 />
+      </section>
+      <section>
+        <ContactSection />
       </section>
     </>
   )
