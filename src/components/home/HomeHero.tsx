@@ -1,193 +1,393 @@
-import React from "react";
-import { FiArrowDownRight } from "react-icons/fi";
-
-interface ButtonProps {
-  children: React.ReactNode;
-  size?: "sm" | "md" | "lg";
-  className?: string;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-}
-
-/** Botón simple interno al componente (sin dependencias externas) */
-function Button({ children, size = "md", className = "", onClick, type = "button" }: ButtonProps) {
-  const sizes: Record<"sm" | "md" | "lg", string> = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2",
-    lg: "px-6 py-3 text-lg",
-  };
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`inline-flex items-center justify-center rounded-xl border border-black/10 bg-black text-white transition-colors hover:opacity-90 active:opacity-80 ${sizes[size]} ${className}`}
-    >
-      {children}
-    </button>
-  );
-}
-
+import { useEffect, useRef } from "react";
+import LogoMarquee from "../LogoMarquee";
+ 
+const colors = {
+  50: "#f8f7f5",
+  100: "#e6e1d7",
+  200: "#c8b4a0",
+  300: "#a89080",
+  400: "#8a7060",
+  500: "#6b5545",
+  600: "#544237",
+  700: "#3c4237",
+  800: "#2a2e26",
+  900: "#1a1d18",
+};
+ 
 export default function HomeHero() {
+  const gradientRef = useRef<HTMLDivElement>(null);
+ 
+  useEffect(() => {
+    // Animate words
+    const words = document.querySelectorAll<HTMLElement>(".word");
+    words.forEach((word) => {
+      const delay = parseInt(word.getAttribute("data-delay") || "0", 10);
+      setTimeout(() => {
+        word.style.animation = "word-appear 0.8s ease-out forwards";
+      }, delay);
+    });
+ 
+    // Mouse gradient
+    const gradient = gradientRef.current;
+    function onMouseMove(e: MouseEvent) {
+      if (gradient) {
+        gradient.style.left = e.clientX - 192 + "px";
+        gradient.style.top = e.clientY - 192 + "px";
+        gradient.style.opacity = "1";
+      }
+    }
+    function onMouseLeave() {
+      if (gradient) gradient.style.opacity = "0";
+    }
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseleave", onMouseLeave);
+ 
+    // Word hover effects
+    words.forEach((word) => {
+      word.addEventListener("mouseenter", () => {
+        word.style.textShadow = "0 0 20px rgba(200, 180, 160, 0.5)";
+      });
+      word.addEventListener("mouseleave", () => {
+        word.style.textShadow = "none";
+      });
+    });
+ 
+    // Click ripple effect
+    function onClick(e: MouseEvent) {
+      const ripple = document.createElement("div");
+      ripple.style.position = "fixed";
+      ripple.style.left = e.clientX + "px";
+      ripple.style.top = e.clientY + "px";
+      ripple.style.width = "4px";
+      ripple.style.height = "4px";
+      ripple.style.background = "rgba(200, 180, 160, 0.6)";
+      ripple.style.borderRadius = "50%";
+      ripple.style.transform = "translate(-50%, -50%)";
+      ripple.style.pointerEvents = "none";
+      ripple.style.animation = "pulse-glow 1s ease-out forwards";
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 1000);
+    }
+    document.addEventListener("click", onClick);
+ 
+    // Floating elements on scroll
+    let scrolled = false;
+    function onScroll() {
+      if (!scrolled) {
+        scrolled = true;
+        document.querySelectorAll<HTMLElement>(".floating-element").forEach((el, index) => {
+          setTimeout(() => {
+            el.style.animationPlayState = "running";
+          }, index * 200);
+        });
+      }
+    }
+    window.addEventListener("scroll", onScroll);
+ 
+    return () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("click", onClick);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+ 
   return (
-    <section className="min-h-screen overflow-hidden relative py-30 bg-[#FAF8F3]">
-      <div className="mx-auto max-w-7xl relative z-20 px-6">
-        <div className="relative ">
-          <p className="text-sm absolute -top-4 left-20 font-medium tracking-wider">
-            1,999
-          </p>
-          <h1
-            className={`z-20 text-primary relative font-bold text-center tracking-[-7px] text-7xl md:text-9xl xl:tracking-[-1rem] md:tracking-[-14px] xl:text-[10rem]`}
-          >
-            BLINK STUDIO
-          </h1>
-          <p className="text-4xl hidden xl:block absolute -bottom-12 right-24 font-thin tracking-[6px]">
-            DIGITAL AGENCY
-          </p>
-          <p className="text-4xl absolute xl:hidden -bottom-20 left-24 font-thin tracking-[6px]">
-            DIGITAL AGENCY
-          </p>
-        </div>
+    <>
+      <style>{`
+        @keyframes word-appear {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-        <div className="grid relative">
-          <div className="space-y-8 pt-20 flex gap-6 justify-center">
-            <div className="flex gap-6 w-full max-w-xl h-fit p-10 items-end space-y-2 text-xl font-bold md:text-2xl lg:text-3xl">
-              <div className="font-semibold text-xl">
-                <div>/ WEBSITES </div>
-                <div>/ ECOMMERCE WEBSITES </div>
-                <div>/ LANDING PAGES </div>
-                <div>/ BRANDING </div>
-                <div>/ AI AUDIOVISUAL CONTENT </div>
-                <div>/ CHATBOTS </div>
-              </div>
-              <div className="absolute hidden md:flex left-1/2 -top-8 w-fit overflow-hidden">
-                <img
-                  src="/logos/blink_logo.webp"
-                  alt="Designer portrait"
-                  className="h-100 w-full object-contain grayscale"
-                />
-                <div className="text-left p-2 rotate-180 [writing-mode:vertical-rl] text-xs font-medium tracking-widest">
-                  BASED IN MEXICO CITY
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex md:hidden left-1/2 -top-10 w-full md:w-fit overflow-hidden">
-            <img
-              src="/logos/blink_logo.webp"
-              alt="Designer portrait"
-              className="h-100 w-full object-contain grayscale"
+        @keyframes pulse-glow {
+          0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.6;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(20);
+            opacity: 0.3;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(50);
+            opacity: 0;
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.3;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.1;
+          }
+        }
+
+        .word {
+          opacity: 0;
+          display: inline-block;
+        }
+
+        .grid-line {
+          stroke: rgba(200, 180, 160, 0.1);
+          stroke-width: 1;
+          opacity: 0;
+          animation: word-appear 1s ease-out forwards;
+        }
+
+        .detail-dot {
+          fill: rgba(200, 180, 160, 0.3);
+          opacity: 0;
+          animation: word-appear 0.8s ease-out forwards;
+        }
+
+        .corner-element {
+          position: absolute;
+          opacity: 0;
+          animation: word-appear 0.8s ease-out forwards;
+        }
+
+        .floating-element {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          background: rgba(200, 180, 160, 0.2);
+          border-radius: 50%;
+          opacity: 0;
+          animation-play-state: paused;
+        }
+
+        .floating-element::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100px;
+          height: 100px;
+          border: 1px solid rgba(200, 180, 160, 0.1);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          animation: float 3s ease-in-out infinite;
+        }
+
+      `}</style>
+      <div
+        className="min-h-screen bg-gradient-to-br from-[#1a1d18] via-black to-[#2a2e26] text-[#e6e1d7] font-primary overflow-hidden relative w-full"
+      >
+      <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path
+              d="M 60 0 L 0 0 0 60"
+              fill="none"
+              stroke="rgba(200,180,160,0.08)"
+              strokeWidth="0.5"
             />
-            <div className="text-left p-2 rotate-180 [writing-mode:vertical-rl] text-xs font-medium tracking-widest">
-              BASED IN MEXICO CITY
-            </div>
-          </div>
-        </div>
-
-        <div className="md:mt-40 mt-10">
-          <p className="mx-auto max-w-2xl font-mono text-center text-sm font-medium tracking-wide md:text-base">
-            WE ARE A DIGITAL STUDIO
-            <br />
-            THAT CREATES SOLUTIONS FOR
-            <br />
-            BRANDS OF ALL SIZES
-          </p>
-        </div>
-
-        <div className="flex justify-center pt-6">
-          <Button size="lg">Book a call</Button>
-        </div>
-
-        <div className="md:flex mt-20 items-end justify-between">
-          <div className="relative">
-            <div className="w-60 h-36 shadow-lg border rounded-md overflow-hidden mb-8 md:mb-0">
-              <img
-                src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/templates/dalim-www.jpg"
-                alt="Portfolio"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-60 h-36 absolute left-6 -top-6 shadow-lg border rounded-md overflow-hidden mb-8 md:mb-0">
-              <img
-                src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/templates/dalim-www.jpg"
-                alt="Portfolio"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-60 h-36 absolute left-12 -top-12 shadow-lg border rounded-md overflow-hidden mb-8 md:mb-0">
-              <img
-                src="https://raw.githubusercontent.com/aliimam-in/aliimam/refs/heads/main/apps/www/public/templates/dalim-www.jpg"
-                alt="Portfolio"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+        <line x1="0" y1="20%" x2="100%" y2="20%" className="grid-line" style={{ animationDelay: "0.5s" }} />
+        <line x1="0" y1="80%" x2="100%" y2="80%" className="grid-line" style={{ animationDelay: "1s" }} />
+        <line x1="20%" y1="0" x2="20%" y2="100%" className="grid-line" style={{ animationDelay: "1.5s" }} />
+        <line x1="80%" y1="0" x2="80%" y2="100%" className="grid-line" style={{ animationDelay: "2s" }} />
+        <line
+          x1="50%"
+          y1="0"
+          x2="50%"
+          y2="100%"
+          className="grid-line"
+          style={{ animationDelay: "2.5s", opacity: 0.05 }}
+        />
+        <line
+          x1="0"
+          y1="50%"
+          x2="100%"
+          y2="50%"
+          className="grid-line"
+          style={{ animationDelay: "3s", opacity: 0.05 }}
+        />
+        <circle cx="20%" cy="20%" r="2" className="detail-dot" style={{ animationDelay: "3s" }} />
+        <circle cx="80%" cy="20%" r="2" className="detail-dot" style={{ animationDelay: "3.2s" }} />
+        <circle cx="20%" cy="80%" r="2" className="detail-dot" style={{ animationDelay: "3.4s" }} />
+        <circle cx="80%" cy="80%" r="2" className="detail-dot" style={{ animationDelay: "3.6s" }} />
+        <circle cx="50%" cy="50%" r="1.5" className="detail-dot" style={{ animationDelay: "4s" }} />
+      </svg>
+ 
+      {/* Corner elements */}
+      <div className="corner-element top-8 left-8" style={{ animationDelay: "4s" }}>
+        <div
+          className="absolute top-0 left-0 w-2 h-2 opacity-30"
+          style={{ background: colors[200] }}
+        ></div>
+      </div>
+      <div className="corner-element top-8 right-8" style={{ animationDelay: "4.2s" }}>
+        <div
+          className="absolute top-0 right-0 w-2 h-2 opacity-30"
+          style={{ background: colors[200] }}
+        ></div>
+      </div>
+      <div className="corner-element bottom-8 left-8" style={{ animationDelay: "4.4s" }}>
+        <div
+          className="absolute bottom-0 left-0 w-2 h-2 opacity-30"
+          style={{ background: colors[200] }}
+        ></div>
+      </div>
+      <div className="corner-element bottom-8 right-8" style={{ animationDelay: "4.6s" }}>
+        <div
+          className="absolute bottom-0 right-0 w-2 h-2 opacity-30"
+          style={{ background: colors[200] }}
+        ></div>
+      </div>
+ 
+      {/* Floating elements */}
+      <div className="floating-element" style={{ top: "25%", left: "15%", animationDelay: "5s" }}></div>
+      <div className="floating-element" style={{ top: "60%", left: "85%", animationDelay: "5.5s" }}></div>
+      <div className="floating-element" style={{ top: "40%", left: "10%", animationDelay: "6s" }}></div>
+      <div className="floating-element" style={{ top: "75%", left: "90%", animationDelay: "6.5s" }}></div>
+ 
+      <div className="relative z-10 min-h-screen flex flex-col justify-between px-8 py-16 md:px-16 md:py-24">
+        {/* Header */}
+        <div className="flex justify-between items-start">
           <div>
-            <div className="flex items-center md:justify-end gap-2">
-              <span className="text-lg font-medium tracking-wider">
-                RECENT WORK
-              </span>
-              <FiArrowDownRight className="size-6" />
-            </div>
+            <h1
+              className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tighter leading-none"
+              style={{ color: colors[50] }}
+            >
+              <span className="word" data-delay="0">BLINK</span>{" "}
+              <span className="word" data-delay="150">STUDIO</span>
+            </h1>
+            <p
+              className="mt-2 text-xs md:text-sm font-mono uppercase tracking-[0.3em] opacity-0"
+              style={{ 
+                color: colors[200],
+                animation: "word-appear 0.8s ease-out forwards",
+                animationDelay: "0.4s"
+              }}
+            >
+              Digital Agency
+            </p>
+          </div>
+          <div
+            className="text-right text-xs font-mono uppercase tracking-wider opacity-0"
+            style={{ 
+              color: colors[300],
+              animation: "word-appear 0.8s ease-out forwards",
+              animationDelay: "0.6s"
+            }}
+          >
+            Based in<br />
+            <span style={{ color: colors[100] }}>Mexico</span>
+          </div>
+        </div>
 
-            <div className="mt-3 md:text-right">
-              <h2 className="text-5xl uppercase tracking-[-4px]">
-                CHECK IT OUT
-              </h2>
+        {/* Services - Main content */}
+        <div className="flex-1 flex items-center">
+          <div className="w-full max-w-4xl">
+            <div className="space-y-1 md:space-y-2">
+              {[
+                { text: "WEBSITES", delay: 800 },
+                { text: "ECOMMERCE WEBSITES", delay: 1000 },
+                { text: "LANDING PAGES", delay: 1200 },
+                { text: "BRANDING", delay: 1400 },
+                { text: "AI AUDIOVISUAL CONTENT", delay: 1600 },
+                { text: "CHATBOTS", delay: 1800 },
+              ].map((service, index) => (
+                <div
+                  key={index}
+                  className="group flex items-center gap-4 py-2 md:py-3 border-b border-[#c8b4a0]/10 hover:border-[#c8b4a0]/30 transition-colors cursor-default"
+                >
+                  <span
+                    className="word text-[#c8b4a0]/40 text-sm font-mono"
+                    data-delay={service.delay}
+                  >
+                    /
+                  </span>
+                  <span
+                    className="word text-lg md:text-2xl lg:text-3xl font-light tracking-wide group-hover:tracking-wider transition-all duration-300"
+                    data-delay={service.delay + 100}
+                    style={{ color: colors[100] }}
+                  >
+                    {service.text}
+                  </span>
+                  <div
+                    className="flex-1 h-px opacity-0 group-hover:opacity-20 transition-opacity"
+                    style={{ background: colors[200] }}
+                  />
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+
+        {/* CTA + Client Marquee */}
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8">
+          <a
+            href="#contact"
+            className="group relative px-8 py-4 overflow-hidden opacity-0"
+            style={{
+              animation: "word-appear 0.8s ease-out forwards",
+              animationDelay: "2.4s",
+            }}
+          >
+            <div
+              className="absolute inset-0 border transition-all duration-300 group-hover:scale-105"
+              style={{ borderColor: colors[200] }}
+            />
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: `linear-gradient(135deg, ${colors[200]}10 0%, transparent 100%)` }}
+            />
+            <span
+              className="relative text-sm md:text-base font-mono uppercase tracking-[0.2em] group-hover:tracking-[0.25em] transition-all duration-300"
+              style={{ color: colors[100] }}
+            >
+              Book A Call
+            </span>
+            <span
+              className="relative ml-3 inline-block transition-transform duration-300 group-hover:translate-x-1"
+              style={{ color: colors[200] }}
+            >
+              →
+            </span>
+          </a>
+
+          {/* Client Logos Marquee */}
+          <div
+            className="w-full md:w-80 lg:w-96 opacity-0"
+            style={{
+              animation: "word-appear 0.8s ease-out forwards",
+              animationDelay: "2.6s",
+            }}
+          >
+            <p
+              className="text-[10px] font-mono uppercase tracking-[0.3em] mb-3 text-right"
+              style={{ color: colors[300] }}
+            >
+              Trusted by
+            </p>
+            <LogoMarquee speed={22} />
           </div>
         </div>
       </div>
-
-      {/* Fondo grid claro */}
+ 
       <div
-        className="absolute block inset-0 z-0"
+        id="mouse-gradient"
+        ref={gradientRef}
+        className="fixed pointer-events-none w-96 h-96 rounded-full blur-3xl transition-all duration-500 ease-out opacity-0"
         style={{
-          backgroundImage: `
-            linear-gradient(to right, #d4d4d4 1px, transparent 1px),
-            linear-gradient(to bottom, #d4d4d4 1px, transparent 1px)
-          `,
-          backgroundSize: "20px 20px",
-          backgroundPosition: "0 0, 0 0",
-          maskImage: `
-            repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-          `,
-          WebkitMaskImage: `
-            repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
-          `,
-          maskComposite: "intersect",
-          WebkitMaskComposite: "source-in",
+          background: `radial-gradient(circle, ${colors[500]}0D 0%, transparent 100%)`,
         }}
-      />
-
-    </section>
+      >      </div>
+    </div>
+    </>
   );
 }

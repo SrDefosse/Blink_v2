@@ -1,6 +1,19 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+const colors = {
+  bg: {
+    primary: "#1a1d18",
+    secondary: "#2a2e26",
+    tertiary: "#3c4237",
+  },
+  text: {
+    primary: "#e6e1d7",
+    secondary: "#c8b4a0",
+    muted: "#a89080",
+  }
+};
+
 /**
  * ShowCase2 — Container Scroll Animation (React + Vite, single file)
  * Uso: <ShowCase2 />
@@ -33,7 +46,7 @@ export default function ShowCase2() {
     "/showcase/showcase2/showcase2_mobile.png";
 
   return (
-    <div className="bg-[#FAF8F3] flex flex-col overflow-hidden pb-[500px] pt-[200px] md:pt-[300px]">
+    <div className="flex flex-col overflow-hidden pb-[500px] pt-[200px] md:pt-[300px]" style={{ backgroundColor: colors.bg.primary }}>
       <div
         ref={containerRef}
         className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
@@ -41,7 +54,7 @@ export default function ShowCase2() {
         <div className="py-10 md:py-40 w-full relative" style={{ perspective: "1000px" }}>
           {/* Header */}
           <motion.div style={{ translateY }} className="max-w-5xl mx-auto text-center">
-            <h1 className="text-4xl font-semibold text-black">
+            <h1 className="text-4xl font-semibold" style={{ color: colors.text.primary }}>
               We build what you<br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
                 Imagine
@@ -54,12 +67,14 @@ export default function ShowCase2() {
             style={{
               rotateX,
               scale,
+              borderColor: colors.bg.tertiary,
+              backgroundColor: colors.bg.secondary,
               boxShadow:
                 "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003",
             }}
-            className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
+            className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 p-2 md:p-6 rounded-[30px] shadow-2xl"
           >
-            <div className="h-full w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:p-4">
+            <div className="h-full w-full overflow-hidden rounded-2xl md:p-4" style={{ backgroundColor: colors.bg.tertiary }}>
               {/* Contenido (imagen) */}
               <img
                 src={isMobile ? mobileImage : desktopImage}

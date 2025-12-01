@@ -2,17 +2,23 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FaFacebook, FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 
+const colors = {
+  bg: {
+    primary: "#1a1d18",
+    secondary: "#2a2e26",
+    tertiary: "#3c4237",
+  },
+  text: {
+    primary: "#e6e1d7",
+    secondary: "#c8b4a0",
+    muted: "#a89080",
+  }
+};
+
 // ==== Single-file demo adapted for React + Vite (no Lenis, no Button import, using react-icons) ====
 export default function Footer() {
   return (
-    <div className="bg-[#FAF8F3] relative w-full">
-      <div className="flex h-screen flex-col items-center justify-center gap-10">
-        <h1 className="max-w-xl text-center">
-          <span className="text-foreground/80 text-4xl font-semibold">Thank you</span>
-          <br />
-          <span className="text-5xl font-bold">for scrolling</span>
-        </h1>
-      </div>
+    <div className="relative w-full" style={{ backgroundColor: colors.bg.primary }}>
       <StickyFooter />
     </div>
   );
@@ -22,12 +28,18 @@ export default function Footer() {
 function StickyFooter({ className = "" }) {
   return (
     <footer
-      className={`bg-[#FAF8F3] relative h-[720px] w-full ${className}`}
-      style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+      className={`relative h-[720px] w-full ${className}`}
+      style={{ 
+        backgroundColor: colors.bg.primary,
+        clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" 
+      }}
     >
       <div className="fixed bottom-0 h-[720px] w-full">
         <div className="sticky top-[calc(100vh-720px)] h-full overflow-y-auto">
-          <div className="relative flex size-full flex-col justify-between gap-5 border-t px-4 py-8 md:px-12">
+          <div 
+            className="relative flex size-full flex-col justify-between gap-5 px-4 py-8 md:px-12"
+            style={{ borderColor: `${colors.text.muted}20` }}
+          >
             {/* Decorative background (neutralized to work without custom CSS tokens) */}
             <div aria-hidden className="absolute inset-0 isolate z-0">
               <div
@@ -37,7 +49,7 @@ function StickyFooter({ className = "" }) {
                   width: 140,
                   transform: "translateY(-87.5px) rotate(-45deg)",
                   background:
-                    "radial-gradient(68% 69% at 55% 31%, rgba(0,0,0,.06) 0%, rgba(140,140,140,.02) 50%, rgba(0,0,0,.01) 80%)",
+                    "radial-gradient(68% 69% at 55% 31%, rgba(200,180,160,.08) 0%, rgba(168,144,128,.04) 50%, rgba(200,180,160,.02) 80%)",
                 }}
               />
               <div
@@ -47,7 +59,7 @@ function StickyFooter({ className = "" }) {
                   width: 240,
                   transform: "translate(5%,-50%) rotate(-45deg)",
                   background:
-                    "radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 80%, transparent 100%)",
+                    "radial-gradient(50% 50% at 50% 50%, rgba(200,180,160,.06) 0%, rgba(200,180,160,.02) 80%, transparent 100%)",
                 }}
               />
               <div
@@ -57,7 +69,7 @@ function StickyFooter({ className = "" }) {
                   width: 240,
                   transform: "translateY(-87.5px) rotate(-45deg)",
                   background:
-                    "radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.04) 0%, rgba(0,0,0,.01) 80%, transparent 100%)",
+                    "radial-gradient(50% 50% at 50% 50%, rgba(200,180,160,.06) 0%, rgba(200,180,160,.02) 80%, transparent 100%)",
                 }}
               />
             </div>
@@ -65,7 +77,7 @@ function StickyFooter({ className = "" }) {
             <div className="mt-10 flex flex-col gap-8 md:flex-row xl:mt-0">
               <AnimatedContainer className="w-full max-w-sm min-w-64 space-y-4 relative z-[1]">
                 <img src="/logos/blink_logo.webp" alt="Logo" className="size-24" />
-                <p className="text-muted-foreground mt-8 text-sm md:mt-0">
+                <p className="mt-8 text-sm md:mt-0" style={{ color: colors.text.muted }}>
                   We create stunning websites, apps, branding, and digital experiences that make your business stand out online.
                 </p>
                 <div className="flex gap-2">
@@ -76,7 +88,19 @@ function StickyFooter({ className = "" }) {
                         key={link.title}
                         href={link.href}
                         aria-label={link.title}
-                        className="inline-flex size-8 items-center justify-center rounded-md border hover:bg-black/5 transition"
+                        className="inline-flex size-8 items-center justify-center rounded-md border transition hover:opacity-80"
+                        style={{ 
+                          borderColor: `${colors.text.muted}30`,
+                          color: colors.text.secondary
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = colors.bg.secondary;
+                          e.currentTarget.style.borderColor = colors.text.muted;
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "transparent";
+                          e.currentTarget.style.borderColor = `${colors.text.muted}30`;
+                        }}
                       >
                         <Icon className="size-4" />
                       </a>
@@ -88,13 +112,20 @@ function StickyFooter({ className = "" }) {
               {footerLinkGroups.map((group, index) => (
                 <AnimatedContainer key={group.label} delay={0.1 + index * 0.1} className="w-full relative z-[1]">
                   <div className="mb-10 md:mb-0">
-                    <h3 className="text-sm uppercase tracking-wide">{group.label}</h3>
-                    <ul className="text-muted-foreground mt-4 space-y-2 text-sm md:text-xs lg:text-sm">
+                    <h3 className="text-sm uppercase tracking-wide" style={{ color: colors.text.primary }}>{group.label}</h3>
+                    <ul className="mt-4 space-y-2 text-sm md:text-xs lg:text-sm">
                       {group.links.map((link) => (
                         <li key={link.title}>
                           <a
                             href={link.href}
-                            className="hover:text-foreground inline-flex items-center transition-all duration-300"
+                            className="inline-flex items-center transition-all duration-300"
+                            style={{ color: colors.text.muted }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = colors.text.secondary;
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = colors.text.muted;
+                            }}
                           >
                             {link.icon && <link.icon className="me-1 size-4" />}
                             {link.title}
@@ -107,7 +138,35 @@ function StickyFooter({ className = "" }) {
               ))}
             </div>
 
-            <div className="text-muted-foreground flex flex-col items-center justify-between gap-2 border-t pt-2 text-sm md:flex-row">
+            {/* BLINK STUDIO Text */}
+            <motion.div
+              className="w-full text-center relative z-[1]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <h2 
+                className="text-6xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tight"
+                style={{ 
+                  color: colors.text.primary,
+                  backgroundImage: `linear-gradient(to right, ${colors.text.muted}, ${colors.text.primary})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text"
+                }}
+              >
+                BLINK STUDIO
+              </h2>
+            </motion.div>
+
+            <div 
+              className="flex flex-col items-center justify-between gap-2 border-t pt-2 text-sm md:flex-row"
+              style={{ 
+                color: colors.text.muted,
+                borderColor: `${colors.text.muted}20`
+              }}
+            >
               <p>© 2025 Blink Sites. All rights reserved.</p>
             </div>
           </div>

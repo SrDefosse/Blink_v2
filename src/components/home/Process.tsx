@@ -1,33 +1,70 @@
 
+const colors = {
+  bg: {
+    primary: "#1a1d18",
+    secondary: "#2a2e26",
+    tertiary: "#3c4237",
+  },
+  text: {
+    primary: "#e6e1d7",
+    secondary: "#c8b4a0",
+    muted: "#a89080",
+  }
+};
+
 export default function Process() {
   return (
-    <main className="bg-[#FAF8F3]">
+    <main style={{ backgroundColor: colors.bg.primary }}>
       <div className="wrapper">
-        <section className="text-gray-900 h-screen w-full bg-[#FAF8F3] grid place-content-center sticky top-0">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-          <h1 className="2xl:text-7xl text-6xl px-8 font-semibold text-center tracking-tight leading-[120%]">
+        <section 
+          className="h-screen w-full grid place-content-center sticky top-0"
+          style={{ backgroundColor: colors.bg.primary }}
+        >
+          <div 
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage: `linear-gradient(to right, ${colors.text.muted}15 1px, transparent 1px), linear-gradient(to bottom, ${colors.text.muted}15 1px, transparent 1px)`,
+              backgroundSize: "54px 54px",
+              maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)"
+            }}
+          />
+          <h1 
+            className="2xl:text-7xl text-6xl px-8 font-semibold text-center tracking-tight leading-[120%]"
+            style={{ color: colors.text.primary }}
+          >
           </h1>
         </section>
 
-        <section className="bg-[#FAF8F3] text-black grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-          <h1 className="2xl:text-7xl text-4xl px-4 md:px-8 font-semibold text-center tracking-tight leading-[120%]">
+        <section 
+          className="grid place-content-center h-screen sticky top-0 rounded-tr-2xl rounded-tl-2xl overflow-hidden"
+          style={{ backgroundColor: colors.bg.primary}}
+        >
+          <div 
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage: `linear-gradient(to right, ${colors.text.muted}15 1px, transparent 1px), linear-gradient(to bottom, ${colors.text.muted}15 1px, transparent 1px)`,
+              backgroundSize: "54px 54px",
+              maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)"
+            }}
+          />
+          <h1 
+            className="2xl:text-7xl text-4xl px-4 md:px-8 font-semibold text-center tracking-tight leading-[120%]"
+            style={{ color: colors.text.primary }}
+          >
             We go step by step to create the best solutions for our clients <br />
           </h1>
         </section>
 
-        <section className="text-gray-900 h-screen w-full bg-[#FAF8F3] grid place-content-center sticky top-0">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-          <h1 className="2xl:text-7xl text-5xl px-4 md:px-8 font-semibold text-center tracking-tight leading-[120%]">
-            Keep scrolling ;)
-          </h1>
-        </section>
+        
       </div>
 
-      <section className="text-gray-900 w-full bg-[#FAF8F3]">
+      <section className="w-full" style={{ backgroundColor: colors.bg.primary }}>
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="md:sticky md:top-0 h-screen flex items-center justify-center order-1 md:order-none">
-            <h1 className="2xl:text-7xl text-4xl md:text-5xl px-4 md:px-8 font-semibold text-center tracking-tight leading-[120%]">
+            <h1 
+              className="2xl:text-7xl text-4xl md:text-5xl px-4 md:px-8 font-semibold text-center tracking-tight leading-[120%]"
+              style={{ color: colors.text.primary }}
+            >
               We translate insights into clear strategies
             </h1>
           </div>
@@ -76,7 +113,7 @@ export default function Process() {
         </div>
       </section>
 
-      <section className="text-gray-900 w-full bg-[#FAF8F3]">
+      <section className="w-full" style={{ backgroundColor: colors.bg.primary }}>
         <div className="grid grid-cols-1 md:grid-cols-2 px-4 md:px-8">
           <div className="grid gap-2 order-1 md:order-none">
             <figure className="md:sticky md:top-0 h-screen grid place-content-center">
@@ -113,15 +150,23 @@ export default function Process() {
             </figure>
           </div>
           <div className="md:sticky md:top-0 h-screen flex items-center justify-center order-2 md:order-none mb-8 md:mb-0">
-            <h1 className="text-4xl md:text-5xl px-4 md:px-8 font-medium text-center md:text-right tracking-tight leading-[120%]">
+            <h1 
+              className="text-4xl md:text-5xl px-4 md:px-8 font-medium text-center md:text-right tracking-tight leading-[120%]"
+              style={{ color: colors.text.primary }}
+            >
               We will create a plan for your project based on your needs and goals
             </h1>
           </div>
         </div>
       </section>
 
-      <footer className="group bg-[#FAF8F3]">
-        <h1 className="text-[12vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent transition-all ease-linear">
+      <footer className="group" style={{ backgroundColor: colors.bg.primary }}>
+        <h1 
+          className="text-[12vw] group-hover:translate-y-4 translate-y-20 leading-[100%] uppercase font-semibold text-center bg-clip-text text-transparent transition-all ease-linear"
+          style={{ 
+            backgroundImage: `linear-gradient(to right, ${colors.text.muted}, ${colors.text.primary})`
+          }}
+        >
           BLINK STUDIO
         </h1>
       </footer>

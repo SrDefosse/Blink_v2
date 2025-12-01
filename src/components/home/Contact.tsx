@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaEnvelope, FaPlus, FaInstagram } from 'react-icons/fa';
 
+const colors = {
+  bg: {
+    primary: "#1a1d18",
+    secondary: "#2a2e26",
+    tertiary: "#3c4237",
+  },
+  text: {
+    primary: "#e6e1d7",
+    secondary: "#c8b4a0",
+    muted: "#a89080",
+  }
+};
+
 const ContactComponent = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -41,14 +54,14 @@ const ContactComponent = () => {
   ];
 
   return (
-    <div className="bg-[#FAF8F3] min-h-screen p-4 md:p-8">
+    <div className="min-h-screen p-4 md:p-8" style={{ backgroundColor: colors.bg.primary }}>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Section */}
         <div className="space-y-8">
           {/* Header */}
-          <div className="bg-gradient-to-br from-[#F8F5ED] to-[#FAF8F3] p-8 rounded-2xl shadow-sm">
-            <p className="text-gray-700 text-sm font-medium mb-2 uppercase tracking-wider">Contact Us</p>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+          <div className="p-8 rounded-2xl shadow-sm" style={{ backgroundColor: colors.bg.secondary }}>
+            <p className="text-sm font-medium mb-2 uppercase tracking-wider" style={{ color: colors.text.muted }}>Contact Us</p>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight" style={{ color: colors.text.primary }}>
               Let's talk about<br />your problem.
             </h1>
           </div>
@@ -56,38 +69,41 @@ const ContactComponent = () => {
           {/* Location & Help */}
           <div className="grid grid-cols-1 gap-6">
 
-            <div className="bg-[#F5F0E8] p-6 rounded-xl shadow-sm border border-[#EFE8D8]">
+            <div className="p-6 rounded-xl shadow-sm border" style={{ backgroundColor: colors.bg.secondary, borderColor: `${colors.text.muted}30` }}>
               <div className="flex items-start gap-3">
-                <div className="bg-[#F8F5ED] p-2 rounded-lg">
-                  <FaEnvelope className="text-gray-700 text-xl" />
+                <div className="p-2 rounded-lg" style={{ backgroundColor: colors.bg.tertiary }}>
+                  <FaEnvelope className="text-xl" style={{ color: colors.text.secondary }} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">How Can We Help?</h3>
-                  <p className="text-sm text-gray-700">blinksites@gmail.com</p>
+                  <h3 className="font-semibold mb-2" style={{ color: colors.text.primary }}>How Can We Help?</h3>
+                  <p className="text-sm" style={{ color: colors.text.muted }}>blinksites@gmail.com</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* FAQ Section */}
-          <div className="bg-[#F2EDE0] p-8 rounded-2xl shadow-sm border border-[#EFE8D8]">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">FAQ</h2>
+          <div className="p-8 rounded-2xl shadow-sm border" style={{ backgroundColor: colors.bg.secondary, borderColor: `${colors.text.muted}30` }}>
+            <h2 className="text-3xl font-bold mb-6" style={{ color: colors.text.primary }}>FAQ</h2>
             <div className="space-y-3">
               {faqItems.map((item, index) => (
-                <div key={index} className="border-b border-[#EFE8D8] last:border-0 overflow-hidden">
+                <div key={index} className="border-b last:border-0 overflow-hidden" style={{ borderColor: `${colors.text.muted}30` }}>
                   <button
                     onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                    className="w-full flex items-center justify-between py-4 text-left hover:text-gray-800 transition-colors duration-200"
+                    className="w-full flex items-center justify-between py-4 text-left transition-colors duration-200"
+                    style={{ color: colors.text.primary }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = colors.text.secondary}
+                    onMouseLeave={(e) => e.currentTarget.style.color = colors.text.primary}
                   >
-                    <span className="text-gray-900 font-medium">{item.question}</span>
-                    <FaPlus className={`text-gray-700 transition-all duration-300 ease-in-out ${expandedFaq === index ? 'rotate-45' : 'rotate-0'}`} />
+                    <span className="font-medium">{item.question}</span>
+                    <FaPlus className={`transition-all duration-300 ease-in-out ${expandedFaq === index ? 'rotate-45' : 'rotate-0'}`} style={{ color: colors.text.muted }} />
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
                       expandedFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <p className="text-gray-700 pb-4 text-sm">{item.answer}</p>
+                    <p className="pb-4 text-sm" style={{ color: colors.text.muted }}>{item.answer}</p>
                   </div>
                 </div>
               ))}
@@ -96,68 +112,107 @@ const ContactComponent = () => {
         </div>
 
         {/* Right Section - Contact Form */}
-        <div className="bg-[#F5F0E8] p-8 rounded-2xl shadow-sm border border-[#EFE8D8]">
+        <div className="p-8 rounded-2xl shadow-sm border" style={{ backgroundColor: colors.bg.secondary, borderColor: `${colors.text.muted}30` }}>
           <div className="flex items-center gap-2 mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Reach out to us today!</h2>
+            <h2 className="text-2xl font-bold" style={{ color: colors.text.primary }}>Reach out to us today!</h2>
           </div>
 
           <div className="space-y-6">
             <div>
-              <p className="text-gray-700 text-sm mb-3">Mail us at</p>
-              <p className="text-gray-900 font-semibold mb-4">blinksites@gmail.com</p>
+              <p className="text-sm mb-3" style={{ color: colors.text.muted }}>Mail us at</p>
+              <p className="font-semibold mb-4" style={{ color: colors.text.primary }}>blinksites@gmail.com</p>
               <div className="flex items-center gap-4">
-                <span className="text-gray-600 text-sm">OR</span>
-                <button type="button" className="bg-[#EFE8D8] hover:bg-[#F2EDE0] p-3 rounded-lg transition-colors">
-                  <FaFacebookF className="text-gray-800" />
+                <span className="text-sm" style={{ color: colors.text.muted }}>OR</span>
+                <button type="button" className="p-3 rounded-lg transition-colors hover:opacity-80" style={{ backgroundColor: colors.bg.tertiary }}>
+                  <FaFacebookF style={{ color: colors.text.secondary }} />
                 </button>
-                <button type="button" className="bg-[#EFE8D8] hover:bg-[#F2EDE0] p-3 rounded-lg transition-colors">
-                  <FaInstagram className="text-gray-800" />
+                <button type="button" className="p-3 rounded-lg transition-colors hover:opacity-80" style={{ backgroundColor: colors.bg.tertiary }}>
+                  <FaInstagram style={{ color: colors.text.secondary }} />
                 </button>
               </div>
             </div>
 
-            <div className="border-t border-[#EFE8D8] pt-6">
-              <p className="text-gray-700 text-sm mb-4">Leave us a brief message</p>
+            <div className="border-t pt-6" style={{ borderColor: `${colors.text.muted}30` }}>
+              <p className="text-sm mb-4" style={{ color: colors.text.muted }}>Leave us a brief message</p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="text-gray-800 text-sm mb-2 block">Your name</label>
+                  <label className="text-sm mb-2 block" style={{ color: colors.text.secondary }}>Your name</label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your name"
-                    className="w-full bg-[#FAF8F3] border border-[#EFE8D8] rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-600 focus:bg-white"
+                    className="w-full border rounded-lg px-4 py-3 placeholder:opacity-60 focus:outline-none focus:border-opacity-60 transition-colors"
+                    style={{ 
+                      backgroundColor: colors.bg.tertiary, 
+                      borderColor: `${colors.text.muted}30`,
+                      color: colors.text.primary
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.backgroundColor = colors.bg.primary;
+                      e.target.style.borderColor = colors.text.muted;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.backgroundColor = colors.bg.tertiary;
+                      e.target.style.borderColor = `${colors.text.muted}30`;
+                    }}
                   />
                 </div>
                 <div>
-                  <label className="text-gray-800 text-sm mb-2 block">Email</label>
+                  <label className="text-sm mb-2 block" style={{ color: colors.text.secondary }}>Email</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email"
-                    className="w-full bg-[#FAF8F3] border border-[#EFE8D8] rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-600 focus:bg-white"
+                    className="w-full border rounded-lg px-4 py-3 placeholder:opacity-60 focus:outline-none focus:border-opacity-60 transition-colors"
+                    style={{ 
+                      backgroundColor: colors.bg.tertiary, 
+                      borderColor: `${colors.text.muted}30`,
+                      color: colors.text.primary
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.backgroundColor = colors.bg.primary;
+                      e.target.style.borderColor = colors.text.muted;
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.backgroundColor = colors.bg.tertiary;
+                      e.target.style.borderColor = `${colors.text.muted}30`;
+                    }}
                   />
                 </div>
               </div>
 
               <div className="mb-4">
-                <label className="text-gray-800 text-sm mb-2 block">Briefly describe your project idea...</label>
+                <label className="text-sm mb-2 block" style={{ color: colors.text.secondary }}>Briefly describe your project idea...</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="Briefly describe your project idea..."
                   rows={4}
-                  className="w-full bg-[#FAF8F3] border border-[#EFE8D8] rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-gray-600 focus:bg-white resize-none"
+                  className="w-full border rounded-lg px-4 py-3 placeholder:opacity-60 focus:outline-none focus:border-opacity-60 resize-none transition-colors"
+                  style={{ 
+                    backgroundColor: colors.bg.tertiary, 
+                    borderColor: `${colors.text.muted}30`,
+                    color: colors.text.primary
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.backgroundColor = colors.bg.primary;
+                    e.target.style.borderColor = colors.text.muted;
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.backgroundColor = colors.bg.tertiary;
+                    e.target.style.borderColor = `${colors.text.muted}30`;
+                  }}
                 />
               </div>
 
               <div className="mb-6">
-                <label className="text-gray-800 text-sm mb-3 block">I'm looking for...</label>
+                <label className="text-sm mb-3 block" style={{ color: colors.text.secondary }}>I'm looking for...</label>
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     { value: 'web-development', label: 'Web Development' },
@@ -166,12 +221,16 @@ const ContactComponent = () => {
                     { value: 'chatbots', label: 'Chatbots' },
                     { value: 'automation', label: 'Automation Systems' }
                   ].map((option) => (
-                    <label key={option.value} className="flex items-center gap-2 text-gray-800 text-sm cursor-pointer">
+                    <label key={option.value} className="flex items-center gap-2 text-sm cursor-pointer" style={{ color: colors.text.primary }}>
                       <input
                         type="checkbox"
                         checked={formData.interests.includes(option.value)}
                         onChange={() => handleCheckboxChange(option.value)}
-                        className="w-4 h-4 bg-white border-[#EFE8D8] rounded accent-gray-700"
+                        className="w-4 h-4 rounded accent-gray-700"
+                        style={{ 
+                          backgroundColor: colors.bg.tertiary,
+                          borderColor: `${colors.text.muted}40`
+                        }}
                       />
                       {option.label}
                     </label>
@@ -181,7 +240,8 @@ const ContactComponent = () => {
 
               <button
                 onClick={handleSubmit}
-                className="w-full bg-[#F8F5ED] hover:bg-[#F2EDE0] text-gray-900 font-semibold py-3 rounded-lg transition-colors"
+                className="w-full font-semibold py-3 rounded-lg transition-colors hover:opacity-80"
+                style={{ backgroundColor: colors.bg.tertiary, color: colors.text.primary }}
               >
                 Send a message
               </button>

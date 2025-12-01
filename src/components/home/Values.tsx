@@ -1,6 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+const colors = {
+  bg: {
+    primary: "#1a1d18",
+    secondary: "#2a2e26",
+    tertiary: "#3c4237",
+  },
+  text: {
+    primary: "#e6e1d7",
+    secondary: "#c8b4a0",
+    muted: "#a89080",
+  }
+};
+
 export default function Values() {
   const sectionRef = useRef(null);
 
@@ -15,11 +28,11 @@ export default function Values() {
   }, []);
 
   const slides = [
-    { label: "PASSION", bg: "bg-[#FAF8F3]" },
-    { label: "VISION", bg: "bg-[#F5F0E8]" },
-    { label: "TEAMWORK", bg: "bg-[#F8F5ED]" },
-    { label: "INNOVATION", bg: "bg-[#F2EDE0]" },
-    { label: "COMMUNICATION", bg: "bg-[#EFE8D8]" },
+    { label: "PASSION", bg: colors.bg.primary },
+    { label: "VISION", bg: colors.bg.secondary },
+    { label: "TEAMWORK", bg: colors.bg.tertiary },
+    { label: "INNOVATION", bg: colors.bg.secondary },
+    { label: "COMMUNICATION", bg: colors.bg.primary },
   ];
 
   const { scrollYProgress } = useScroll({
@@ -49,14 +62,35 @@ export default function Values() {
                 return (
                   <li
                     key={s.label}
-                    className={`flex-none w-screen h-screen ${s.bg} flex items-center justify-center`}
+                    className="flex-none w-screen h-screen flex items-center justify-center relative overflow-hidden"
+                    style={{ backgroundColor: s.bg }}
                   >
+                    {/* Grid pattern overlay */}
+                    <div 
+                      className="absolute inset-0 opacity-30"
+                      style={{
+                        backgroundImage: `linear-gradient(to right, ${colors.text.muted}10 1px, transparent 1px), linear-gradient(to bottom, ${colors.text.muted}10 1px, transparent 1px)`,
+                        backgroundSize: "60px 60px"
+                      }}
+                    />
+                    {/* Radial gradient overlay */}
+                    <div 
+                      className="absolute inset-0"
+                      style={{
+                        background: `radial-gradient(ellipse 80% 50% at 50% 50%, transparent 0%, ${s.bg} 100%)`
+                      }}
+                    />
                     <motion.h2
-                      className="text-[15vw] md:text-[10vw] font-semibold leading-none text-gray-900"
-                      style={{ x: headerX }}
+                      className="text-[15vw] md:text-[10vw] font-semibold leading-none relative z-10"
+                      style={{ x: headerX, color: colors.text.primary }}
                     >
                       {s.label}
                     </motion.h2>
+                    {/* Decorative accent line */}
+                    <div 
+                      className="absolute bottom-20 left-1/2 -translate-x-1/2 w-24 h-px"
+                      style={{ backgroundColor: colors.text.secondary, opacity: 0.3 }}
+                    />
                   </li>
                 );
               })}

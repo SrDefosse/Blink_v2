@@ -29,7 +29,7 @@ const HoveredLink = ({ children, to, href, ...rest }: HoveredLinkProps) => {
       <Link
         to={to}
         {...rest}
-        className="text-neutral-700 hover:text-black"
+        className="text-[#e6e1d7] hover:text-[#f8f7f5]"
       >
         {children}
       </Link>
@@ -64,10 +64,10 @@ const ProductItem = ({ title, description, href, src }: ProductItemProps) => {
         className="flex-shrink-0 rounded-md shadow-2xl object-cover"
       />
       <div>
-        <h4 className="text-xl font-bold mb-1 text-black">
+        <h4 className="text-xl font-bold mb-1 text-[#f8f7f5]">
           {title}
         </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem]">
+        <p className="text-[#c8b4a0] text-sm max-w-[10rem]">
           {description}
         </p>
       </div>
@@ -84,7 +84,7 @@ const Menu = ({ setActive, children }: MenuProps) => {
   return (
     <nav
       onMouseLeave={() => setActive(null)}
-      className="relative rounded-full border border-white/20 bg-[#FFF8F0]/70 backdrop-blur-md shadow-lg flex justify-center space-x-6 px-8 py-6"
+      className="relative rounded-full border border-[#544237]/30 bg-[#2a2e26]/80 backdrop-blur-md shadow-2xl flex justify-center space-x-6 px-8 py-6"
     >
       {children}
     </nav>
@@ -103,7 +103,7 @@ const MenuItem = ({ setActive, active, item, children }: MenuItemProps) => {
     <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] select-none"
+        className="cursor-pointer text-[#f8f7f5] hover:opacity-[0.9] select-none"
       >
         {item}
       </motion.p>
@@ -119,7 +119,7 @@ const MenuItem = ({ setActive, active, item, children }: MenuItemProps) => {
               <motion.div
                 transition={transition}
                 layoutId="active"
-                className="bg-[#FFF8F0] rounded-2xl overflow-hidden border border-white/30 shadow-2xl"
+                className="bg-[#1a1d18] rounded-2xl overflow-hidden border border-[#544237]/30 shadow-2xl"
               >
                 <motion.div layout className="w-max h-full p-4">
                   {children}
@@ -259,7 +259,7 @@ export default function Navbar({ className }: NavbarProps) {
         <Menu setActive={setActive}>
           <Link
             to="/"
-            className="cursor-pointer text-black hover:opacity-[0.9] select-none"
+            className="cursor-pointer text-[#f8f7f5] hover:opacity-[0.9] select-none"
           >
             Home
           </Link>
@@ -303,11 +303,11 @@ export default function Navbar({ className }: NavbarProps) {
         <div className="flex justify-end">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-[#FFF8F0]/70 backdrop-blur-md border border-white/20 shadow-2xl"
+            className="p-2 rounded-lg bg-[#2a2e26]/80 backdrop-blur-md border border-[#544237]/30 shadow-2xl"
             aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6 text-black"
+              className="w-6 h-6 text-[#f8f7f5]"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -332,7 +332,7 @@ export default function Navbar({ className }: NavbarProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="mt-2 bg-[#FFF8F0]/80 backdrop-blur-lg border border-white/30 rounded-2xl shadow-xl overflow-hidden"
+              className="mt-2 bg-[#1a1d18]/90 backdrop-blur-lg border border-[#544237]/30 rounded-2xl shadow-xl overflow-hidden"
             >
               <div className="p-4">
                 {/* Home Section */}
@@ -340,7 +340,7 @@ export default function Navbar({ className }: NavbarProps) {
                   <Link
                     to="/"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block font-medium text-black hover:opacity-70"
+                    className="block font-medium text-[#f8f7f5] hover:opacity-70"
                   >
                     Home
                   </Link>
@@ -350,7 +350,7 @@ export default function Navbar({ className }: NavbarProps) {
                 <div className="border-b border-neutral-200 pb-3">
                   <button
                     onClick={() => toggleMobileAccordion("services")}
-                    className="w-full flex justify-between items-center text-left font-medium text-black"
+                    className="w-full flex justify-between items-center text-left font-medium text-[#f8f7f5]"
                   >
                     <span>Services</span>
                     <svg
@@ -385,7 +385,7 @@ export default function Navbar({ className }: NavbarProps) {
                               key={s.label}
                               to={s.to}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="block text-sm text-neutral-700 hover:text-black"
+                              className="block text-sm text-[#c8b4a0] hover:text-[#f8f7f5]"
                             >
                               {s.label}
                             </Link>
@@ -400,7 +400,7 @@ export default function Navbar({ className }: NavbarProps) {
                 <div className="border-b border-neutral-200 py-3">
                   <button
                     onClick={() => toggleMobileAccordion("products")}
-                    className="w-full flex justify-between items-center text-left font-medium text-black"
+                    className="w-full flex justify-between items-center text-left font-medium text-[#f8f7f5]"
                   >
                     <span>Portfolio</span>
                     <svg
@@ -435,7 +435,7 @@ export default function Navbar({ className }: NavbarProps) {
                               key={p.title}
                               href={p.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="block text-sm text-neutral-700 hover:text-black"
+                              className="block text-sm text-[#c8b4a0] hover:text-[#f8f7f5]"
                             >
                               {p.title}
                             </a>
@@ -450,7 +450,7 @@ export default function Navbar({ className }: NavbarProps) {
                 <div className="pt-3">
                   <button
                     onClick={() => toggleMobileAccordion("pricing")}
-                    className="w-full flex justify-between items-center text-left font-medium text-black"
+                    className="w-full flex justify-between items-center text-left font-medium text-[#f8f7f5]"
                   >
                     <span>Pricing</span>
                     <svg
@@ -485,7 +485,7 @@ export default function Navbar({ className }: NavbarProps) {
                               key={p.label}
                               to={p.to}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="block text-sm text-neutral-700 hover:text-black"
+                              className="block text-sm text-[#c8b4a0] hover:text-[#f8f7f5]"
                             >
                               {p.label}
                             </Link>
