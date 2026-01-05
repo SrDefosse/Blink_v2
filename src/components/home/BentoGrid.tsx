@@ -1,6 +1,6 @@
 import React from "react";
-import { FiGlobe, FiShoppingCart, FiLayers, FiZap, FiCode, FiTrendingUp, FiClock, FiUsers, FiAward, FiTarget } from "react-icons/fi";
-import { BsHeartFill, BsLightningChargeFill } from "react-icons/bs";
+import { FiGlobe, FiShoppingCart, FiLayers, FiZap, FiCode, FiTrendingUp, FiClock, FiUsers, FiAward, FiTag, FiCpu, FiMessageCircle } from "react-icons/fi";
+import { BsHeartFill } from "react-icons/bs";
 
 const colors = {
   bg: {
@@ -111,9 +111,9 @@ const BlinkStudioShowcase: React.FC = () => {
               <ServiceItem icon={<FiGlobe className="h-4 w-4" />} label="Websites" />
               <ServiceItem icon={<FiShoppingCart className="h-4 w-4" />} label="Ecommerce" />
               <ServiceItem icon={<FiLayers className="h-4 w-4" />} label="Landing Pages" />
-              <ServiceItem icon={<FiCode className="h-4 w-4" />} label="Branding" />
-              <ServiceItem icon={<BsLightningChargeFill className="h-4 w-4" />} label="AI Content" />
-              <ServiceItem icon={<FiTarget className="h-4 w-4" />} label="Chatbots" />
+              <ServiceItem icon={<FiTag className="h-4 w-4" />} label="Branding" />
+              <ServiceItem icon={<FiCpu className="h-4 w-4" />} label="AI Content" />
+              <ServiceItem icon={<FiMessageCircle className="h-4 w-4" />} label="Chatbots" />
             </div>
           </div>
 
@@ -199,10 +199,10 @@ const BlinkStudioShowcase: React.FC = () => {
             </div>
             <div className="flex flex-wrap gap-2">
               <TechBadge>React</TechBadge>
-              <TechBadge>Next.js</TechBadge>
               <TechBadge>TypeScript</TechBadge>
               <TechBadge>Node.js</TechBadge>
-              <TechBadge>AI/ML</TechBadge>
+              <TechBadge>TanStack</TechBadge>
+              <TechBadge>React Router</TechBadge>
             </div>
           </div>
 
