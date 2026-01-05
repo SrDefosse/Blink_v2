@@ -28,11 +28,11 @@ export default function Values() {
   }, []);
 
   const slides = [
-    { label: "PASSION", bg: colors.bg.primary },
-    { label: "VISION", bg: colors.bg.secondary },
-    { label: "TEAMWORK", bg: colors.bg.tertiary },
-    { label: "INNOVATION", bg: colors.bg.secondary },
-    { label: "COMMUNICATION", bg: colors.bg.primary },
+    { label: "PASSION", bg: colors.bg.primary, image: "/values/passion.webp" },
+    { label: "VISION", bg: colors.bg.secondary, image: "/values/vision.webp" },
+    { label: "TEAMWORK", bg: colors.bg.tertiary, image: "/values/teamwork.webp" },
+    { label: "INNOVATION", bg: colors.bg.secondary, image: "/values/innovation.webp" },
+    { label: "COMMUNICATION", bg: colors.bg.primary, image: "/values/communication.webp" },
   ];
 
   const { scrollYProgress } = useScroll({
@@ -65,6 +65,12 @@ export default function Values() {
                     className="flex-none w-screen h-screen flex items-center justify-center relative overflow-hidden"
                     style={{ backgroundColor: s.bg }}
                   >
+                    {/* Background image */}
+                    <img 
+                      src={s.image}
+                      alt={s.label}
+                      className="absolute inset-0 w-full h-full object-cover opacity-80"
+                    />
                     {/* Grid pattern overlay */}
                     <div 
                       className="absolute inset-0 opacity-30"

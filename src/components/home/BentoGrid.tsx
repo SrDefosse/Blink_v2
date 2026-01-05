@@ -153,7 +153,7 @@ const BlinkStudioShowcase: React.FC = () => {
           {/* Hero image – Blink Studio (center, spans all rows) */}
           <div className="relative overflow-hidden rounded-3xl lg:col-start-2 lg:row-start-1 lg:row-span-4" style={{ backgroundColor: colors.bg.tertiary }}>
             <img
-              src="/images/doc-hands-main.jpg"
+              src="/bento/bento-1.webp"
               alt="Blink Studio digital agency"
               className="h-full w-full object-cover min-h-[260px] md:min-h-[600px]"
             />
